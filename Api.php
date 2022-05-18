@@ -63,7 +63,7 @@ class Api
      *
      * @return Resource
      */
-    public function signMandate($subscriberReference, $paymentSchema, array $mandateFields)
+    public function signMandate($subscriberReference, $paymentSchema, array $mandateFields, string $returnUrl = null)
     {
         $fields = [
             'started' => true,
@@ -84,7 +84,8 @@ class Api
                         'signatory' => $mandateFields
                     ]
                 ]
-            ]
+            ],
+            'returnUrl' => $returnUrl
         ];
 
         return $this->doRequest('POST', Constants::FOLLOW_CREATE_ORDERS, $fields);

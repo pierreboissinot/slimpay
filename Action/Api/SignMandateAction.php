@@ -65,7 +65,9 @@ class SignMandateAction extends BaseApiAwareAction
                         'postalCode' => $model['zip'],
                         'country' => $model['country']
                     ]
-                ])
+                ],
+                $model['return_url']
+                )
             );
 
             if(Constants::CHECKOUT_MODE_REDIRECT == $model['checkout_mode']) {
