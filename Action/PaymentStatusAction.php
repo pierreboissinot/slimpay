@@ -10,6 +10,7 @@ use Payum\Slimpay\Constants;
 use Payum\Slimpay\Request\Api\GetPaymentHumanStatus;
 use Payum\Slimpay\Request\Api\SyncPayment;
 use Payum\Slimpay\Util\ResourceSerializer;
+use Payum\Core\Request\GetStatusInterface;
 
 class PaymentStatusAction implements ActionInterface, GatewayAwareInterface
 {
@@ -54,7 +55,7 @@ class PaymentStatusAction implements ActionInterface, GatewayAwareInterface
     public function supports($request)
     {
         return
-            $request instanceof GetPaymentHumanStatus &&
+            $request instanceof GetStatusInterface &&
             $request->getModel() instanceof \ArrayAccess
         ;
     }
